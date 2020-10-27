@@ -34,14 +34,14 @@ document.querySelector("#btnStart").addEventListener("click", () => {
 })
 
 
-// const croixOUrond = () => {
-//     if(playerTurn === true){
-//         document.querySelector("#b1").style.backgroundImage = "url('croix.png')";
-//         document.querySelector("#b1").style.backgroundSize = "contain";
-//     }else{
+const croixOUrond = () => {
+    if(playerTurn === true){
+        document.querySelector("#b1").style.backgroundImage = "url('croix.png')";
+        document.querySelector("#b1").style.backgroundSize = "contain";
+    }else{
 
-//     }
-// }
+    }
+}
 
 
 document.querySelector("#b1").addEventListener("click", croixOUrond());
@@ -57,10 +57,3 @@ document.querySelector("#b9").addEventListener("click", croixOUrond());
 
 // b1.style.backgroundImage = "url('rond.png')";
 //     b1.style.backgroundSize = "contain";
-
-
-
-
-
-
-let plateau = document.querySelector("#plateau");
