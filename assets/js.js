@@ -68,9 +68,7 @@ const croixOUrond = (e) => {
             };
             verif(e);
         }
-        
     }
-    
 }
 
 
