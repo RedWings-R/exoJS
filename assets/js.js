@@ -1,16 +1,17 @@
 let etatPArtie = false;
 let joueurs = ['X', 'O'];
+let compteur = 0;
 
 const init = () =>{
 
     joueur = joueurs[0];
         tabJeux = ["1","2","3","4","5","6","7","8","9"];
         etatPArtie = true;
-        z = 0;
+        compteur = 0;
 
         document.querySelector("#btnStart").innerHTML = "Rejouer"
         document.querySelector("#divPlateau").style.display = "block";
-        
+
         for(let i = 1; i < 10 ; i++ ){
 
             let x = document.createElement("SPAN");
@@ -18,9 +19,10 @@ const init = () =>{
 
             x.id = String(i);
             x.appendChild(t);
+            x.classList.add("case");
 
             document.querySelector("#plateau").appendChild(x);
-        } 
+        }
 
 }
 
@@ -28,62 +30,59 @@ const init = () =>{
 const replay = () => {
 
     document.querySelectorAll('.wrapper>span').forEach(elem => elem.style.backgroundImage = "none");
-        document.querySelectorAll('.wrapper>span').forEach(elem => elem.className = ""); 
-        document.querySelectorAll('.wrapper>span').forEach(elem => elem.textContent = ""); 
+        document.querySelectorAll('.wrapper>span').forEach(elem => elem.className = "");
+        document.querySelectorAll('.wrapper>span').forEach(elem => elem.textContent = "");
 
         tabJeux = ["1","2","3","4","5","6","7","8","9"];
         joueur = joueurs[0];
-        z = 0;
+        compteur = 0;
 
 }
 
 
 const croixOUrond = (e) => {
 
-    if (joueur === joueurs[0]) {
-        if (e.target.className.indexOf("filled") >= 0) {
-            //On affiche une alerte
+    if(e.target.id == "plateau"){
+        console.log("T'as clické sur le plateau")
+        console.log(compteur)
+        return false;
+    }else{
+        if (e.target.className.indexOf("filled") >= 0){
             alert("Case déja joué");
-        } else {
-            e.target.style.backgroundImage = "url(./assets/croix.png)";
-            e.target.style.backgroundSize = "contain";
-            e.target.className = "filled";
-            e.target.textContent = " ";
-            joueur = joueurs[1];
+        }else{
+            if (joueur === joueurs[0]) {
+                e.target.style.backgroundImage = "url(./assets/croix.png)";
+                e.target.style.backgroundSize = "contain";
+                e.target.className = "filled";
+                e.target.textContent = " ";
+                joueur = joueurs[1];
+            }
+            else if (joueur === joueurs[1]) {
+                    e.target.style.backgroundImage = "url(./assets/rond.png)";
+                    e.target.style.backgroundSize = "contain";
+        
+                    e.target.className = "filled";
+                    e.target.textContent = "  ";
+        
+                    joueur = joueurs[0];
+            };
+            verif(e);
         }
+        
     }
-    else if (joueur === joueurs[1]) { 
-        if (e.target.className.indexOf('filled') >= 0) {
-            //On affiche un alerte
-            alert("Case déja joué");
-        } else {
-
-            e.target.style.backgroundImage = "url(./assets/rond.png)";
-            e.target.style.backgroundSize = "contain";
-
-            e.target.className = "filled";
-            e.target.textContent = "  ";
-
-            joueur = joueurs[0];
-        }
-    }
-    ;
-
-    verif(e);
+    
 }
 
 
 const verif = (e) => {
-        
+    console.log("VErigf")
     tabJeux.splice(e.target.id-1, 1, e.target.textContent)
-    console.log(tabJeux)
-    console.log(z)
-    if(z===8){
+    if(compteur >= 9){
         alert("Pas de gagnant");
         replay();
     }
-    z++;
-    if (tabJeux[0] === tabJeux[1] && tabJeux[0]=== tabJeux[2] || 
+    compteur++;
+    if (tabJeux[0] === tabJeux[1] && tabJeux[0]=== tabJeux[2] ||
         tabJeux[3] === tabJeux[4] && tabJeux[3]=== tabJeux[5] ||
         tabJeux[6] === tabJeux[7] && tabJeux[6]=== tabJeux[8] ||
         tabJeux[0] === tabJeux[3] && tabJeux[0]=== tabJeux[6] ||
@@ -99,7 +98,6 @@ const verif = (e) => {
             replay();
         }
     }
-    
 }
 
 
