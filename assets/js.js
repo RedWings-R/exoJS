@@ -74,8 +74,8 @@ const croixOUrond = (e) => {
                     console.log("0 a joué")     
                 }
             } 
+            verif(e);
         }
-        verif(e);
     }
 }
 
@@ -83,7 +83,7 @@ const croixOUrond = (e) => {
 const verif = (e) => {
     console.log("VErigf")
     tabJeux.splice(e.target.id-1, 1, e.target.textContent)
-    if(compteur > 8){
+    if(compteur >= 8){
         alert("Pas de gagnant");
         replay();
     }
