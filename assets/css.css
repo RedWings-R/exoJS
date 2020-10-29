@@ -28,8 +28,8 @@ span{
 }
 
 img {
-  height: 400px;
-  width: auto;
+  max-width: 60%;
+  max-height: 70%;
 }
 
 
