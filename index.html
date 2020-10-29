@@ -5,15 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-    <h1 class="center">MORPION</h1>
-    <div class="center"><button id="btnStart">Lancer la partie</button></div>
-    <br>
-    <div class="centerBOX" id="divPlateau">
-        <span class="wrapper" id="plateau"></span>
+    <div class="context">
+        <h1 class="center">MORPION</h1>
+        <div class="center">
+            <button class="btnSR button button1" id="btnStart">Lancer la partie</button>
+        </div>
+        <br>
+        <div class="centerBOX backgroundColor" id="divPlateau">
+            <span class="wrapper" id="plateau"></span>
+        </div>
+        <h1 style="display: none;" class="center" id="h1Div">Au joueur X de jouer</h1>
+
+
+
+
+
+
+
+        
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-4">
+                <header class="w3-container backgroundColor"> 
+                    <h2 class="center" id="h2Modal"></h2>
+                </header>
+
+                <div class="w3-container center">
+                    <img id="img" src="">
+                </div>
+                <footer class="w3-container backgroundColor">
+                    <div class="center btnSR">
+                        <button class="button button1" style="color: crimson; background-color: white;" id="btnReplay">Rejouer ?</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
     </div>
-    <h1 style="display: none; text-align: center;" id="h1Div">X</h1>
+    
+
 </body>
 <script src="./assets/js.js"></script>
 </html>
