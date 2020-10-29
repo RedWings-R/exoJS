@@ -3,7 +3,7 @@ let joueurs = ['X', 'O'];
 let compteur = 0;
 
 const init = () =>{
-
+    console.log("Init")
     joueur = joueurs[0];
     tabJeux = ["1","2","3","4","5","6","7","8","9"];
     etatPArtie = true;
@@ -28,10 +28,12 @@ const init = () =>{
 
 const replay = () => {
 
+    console.log("Rejouer")
     document.querySelectorAll('.wrapper>span').forEach(elem => elem.style.backgroundImage = "none");
     document.querySelectorAll('.wrapper>span').forEach(elem => elem.className = "");
     document.querySelectorAll('.wrapper>span').forEach(elem => elem.textContent = "");
     document.querySelector("#id01").style.display = "none";
+    document.querySelector("#img").src = "";
     document.querySelector("#h1Div").innerHTML = "Au joueur X de jouer"
     
 
@@ -134,10 +136,8 @@ const majImg = async () => {
 document.querySelector("#btnStart").addEventListener("click", () => {
     if(etatPArtie){
         replay();
-        console.log("Rejouer")
     }else{
         init();
-        console.log("Init")
     }
 })
 
