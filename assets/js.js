@@ -10,8 +10,8 @@ const init = () =>{
         compteur = 0;
 
         document.querySelector("#btnStart").innerHTML = "Rejouer"
-        document.querySelector("#divPlateau").style.display = "block";
-
+        document.querySelector("#divPlateau").style.display = "block";h1Div
+        document.querySelector("#h1Div").style.display = "block";
         for(let i = 1; i < 10 ; i++ ){
 
             let x = document.createElement("SPAN");
@@ -55,19 +55,27 @@ const croixOUrond = (e) => {
                 e.target.style.backgroundSize = "contain";
                 e.target.className = "filled";
                 e.target.textContent = " ";
+
                 joueur = joueurs[1];
+
+                document.querySelector("#h1Div").innerHTML = "O"
+                console.log("X a joué")
             }
-            else if (joueur === joueurs[1]) {
+            else{
+                if (joueur === joueurs[1]) {
                     e.target.style.backgroundImage = "url(./assets/rond.png)";
                     e.target.style.backgroundSize = "contain";
-        
                     e.target.className = "filled";
                     e.target.textContent = "  ";
         
                     joueur = joueurs[0];
-            };
-            verif(e);
+
+                    document.querySelector("#h1Div").innerHTML = "X"
+                    console.log("0 a joué")     
+                }
+            } 
         }
+        verif(e);
     }
 }
 
@@ -75,7 +83,7 @@ const croixOUrond = (e) => {
 const verif = (e) => {
     console.log("VErigf")
     tabJeux.splice(e.target.id-1, 1, e.target.textContent)
-    if(compteur >= 9){
+    if(compteur > 8){
         alert("Pas de gagnant");
         replay();
     }
@@ -89,10 +97,10 @@ const verif = (e) => {
         tabJeux[0] === tabJeux[4] && tabJeux[0]=== tabJeux[8] ||
         tabJeux[2] === tabJeux[4] && tabJeux[2]=== tabJeux[6]) {
         if (joueur === joueurs[0]) {
-            alert('Joeur O Gagne');
+            alert('Joueur O Gagne');
             replay();
         } else if (joueur === joueurs[1]) {
-            alert('Joeur X Gagne');
+            alert('Joueur X Gagne');
             replay();
         }
     }
