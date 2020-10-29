@@ -2,15 +2,17 @@ let etatPArtie = false;
 let joueurs = ['X', 'O'];
 let compteur = 0;
 
-const init = () =>{
+const init = async () =>{
     console.log("Init")
     joueur = joueurs[0];
     tabJeux = ["1","2","3","4","5","6","7","8","9"];
     etatPArtie = true;
     compteur = 0;
+    document.querySelector("#img").src= await majImg();
+
 
     document.querySelector("#btnStart").innerHTML = "Rejouer"
-    document.querySelector("#divPlateau").style.display = "block";h1Div
+    document.querySelector("#divPlateau").style.display = "block";
     document.querySelector("#h1Div").style.display = "block";
     for(let i = 1; i < 10 ; i++ ){
 
@@ -26,16 +28,15 @@ const init = () =>{
 
 }
 
-const replay = () => {
+const replay = async () => {
 
     console.log("Rejouer")
     document.querySelectorAll('.wrapper>span').forEach(elem => elem.style.backgroundImage = "none");
     document.querySelectorAll('.wrapper>span').forEach(elem => elem.className = "");
     document.querySelectorAll('.wrapper>span').forEach(elem => elem.textContent = "");
     document.querySelector("#id01").style.display = "none";
-    document.querySelector("#img").src = "";
+    document.querySelector("#img").src= await majImg();
     document.querySelector("#h1Div").innerHTML = "Au joueur X de jouer"
-    
 
     tabJeux = ["1","2","3","4","5","6","7","8","9"];
     joueur = joueurs[0];
@@ -83,7 +84,7 @@ const croixOUrond = (e) => {
 }
 
 
-const verif = async (e) => {
+const verif = (e) => {
     console.log(compteur)
     tabJeux.splice(e.target.id-1, 1, e.target.textContent)
     if (tabJeux[0] === tabJeux[1] && tabJeux[0]=== tabJeux[2] ||
@@ -97,13 +98,11 @@ const verif = async (e) => {
         if (joueur === joueurs[0]) {
             document.querySelector("#h2Modal").innerHTML = "Bravo joueur O";
             document.querySelector("#h1Div").innerHTML = "";
-            document.querySelector("#img").src= await majImg();
             document.querySelector("#id01").style.display = "block";
 
         } else if (joueur === joueurs[1]) {
             document.querySelector("#h2Modal").innerHTML = "Bravo joueur X";
             document.querySelector("#h1Div").innerHTML = "";
-            document.querySelector("#img").src = await majImg();
             document.querySelector("#id01").style.display = "block";
 
         }
@@ -111,7 +110,6 @@ const verif = async (e) => {
     if(compteur > 7){
         console.log(compteur)
         document.querySelector("#h2Modal").innerHTML = "Pas de gagnant";
-        document.querySelector("#img").src = await majImg();
         document.querySelector("#id01").style.display = "block";
     }
     compteur++;
